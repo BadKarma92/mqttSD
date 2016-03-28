@@ -29,9 +29,11 @@ app.configure('development', function(){
 app.configure('production', function(){
   app.use(express.errorHandler());
 });
- 
-var mqtt_url = url.parse(process.env.CLOUDMQTT_URL);
-var auth = mqtt_url.auth.split(':');
+
+//This is where we specify the mqtt brokker URL
+var mqtt_url = url.parse('mqtt://jlmodqya:ebpURANCJ64A@m10.cloudmqtt.com:12495');
+//This is where we specify the mqtt brokker Password
+var auth = mqtt_url.auth.split('jlmodqya:ebpURANCJ64A');
 
 app.get('/', function(req, res){
   res.render('index');
